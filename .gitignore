@@ -5,3 +5,6 @@ valideer.egg-info/
 .coverage
 .pydevproject
 .project
+/.idea
+/.venv
+/.eggs

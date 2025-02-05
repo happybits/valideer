@@ -1,25 +1,15 @@
 import sys
 
-PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 
-if PY2:  # pragma: no cover
-    string_types = basestring
-    int_types = (int, long)
-    from itertools import izip, imap
-    long = long
-    unicode = unicode
-    xrange = xrange
-    iteritems = dict.iteritems
-else:  # pragma: no cover
-    string_types = str
-    int_types = (int,)
-    izip = zip
-    imap = map
-    long = int
-    unicode = str
-    iteritems = dict.items
-    xrange = range
+string_types = str
+int_types = (int,)
+izip = zip
+imap = map
+long = int
+unicode = str
+iteritems = dict.items
+xrange = range
 
 
 def with_metaclass(mcls):

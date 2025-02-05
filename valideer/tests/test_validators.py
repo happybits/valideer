@@ -1,10 +1,12 @@
-from datetime import date, datetime
-from decimal import Decimal
-from functools import partial, wraps
-import collections
 import json
 import re
 import unittest
+from collections import OrderedDict
+from collections.abc import Sequence, Mapping as ABCMapping
+from datetime import date, datetime
+from decimal import Decimal
+from functools import partial, wraps
+
 import valideer as V
 from valideer.compat import long, unicode, xrange, string_types, int_types
 
@@ -562,16 +564,16 @@ class TestValidator(unittest.TestCase):
         self._testValidation(
             {"foo": V.AdaptTo(int), "bar": V.AdaptTo(float)},
             adapted=[(
-                collections.OrderedDict([("foo", "1"), ("bar", "2")]),
-                collections.OrderedDict([("foo", 1), ("bar", 2.0)])
+                OrderedDict([("foo", "1"), ("bar", "2")]),
+                OrderedDict([("foo", 1), ("bar", 2.0)])
             )])
 
     def test_adapt_ordered_dict_mapping(self):
         self._testValidation(
             V.Mapping("string", V.AdaptTo(float)),
             adapted=[(
-                collections.OrderedDict([("foo", "1"), ("bar", "2")]),
-                collections.OrderedDict([("foo", 1.0), ("bar", 2.0)])
+                OrderedDict([("foo", "1"), ("bar", "2")]),
+                OrderedDict([("foo", 1.0), ("bar", 2.0)])
             )])
 
     def test_adapt_by(self):
@@ -942,8 +944,8 @@ class TestValidator(unittest.TestCase):
         V.set_name_for_types("integer", int, long)
         V.set_name_for_types("number", float)
         V.set_name_for_types("string", str, unicode)
-        V.set_name_for_types("array", list, collections.Sequence)
-        V.set_name_for_types("object", dict, collections.Mapping)
+        V.set_name_for_types("array", list, Sequence)
+        V.set_name_for_types("object", dict, ABCMapping)
 
         self._testValidation({"+foo": "number",
                               "?bar": ["integer"],
