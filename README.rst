@@ -45,15 +45,33 @@ Lightweight data validation and adaptation library for Python.
 Installation
 ------------
 
-To install run::
+**From Git (Recommended for this fork):**
+
+Add to your ``requirements.txt``::
+
+    git+https://github.com/happybits/valideer.git@main
+
+Or pin to a specific commit for reproducible builds::
+
+    git+https://github.com/happybits/valideer.git@4b8841b
+
+Or install directly::
+
+    pip install git+https://github.com/happybits/valideer.git@main
+
+**From PyPI (original package):**
+
+To install the original package run::
 
     pip install valideer
 
-Or for the latest version::
+**For development:**
+
+Clone and install in editable mode::
 
     git clone git@github.com:happybits/valideer.git
     cd valideer
-    python setup.py install
+    pip install -e .
 
 You may run the unit tests with::
 
