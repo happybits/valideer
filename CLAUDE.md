@@ -10,21 +10,38 @@ Valideer is a lightweight Python data validation and adaptation library that pro
 - **Declarative schemas**: Mini-language for defining validation rules
 - **Extensibility**: Custom validators and adaptors
 
+This is a **happybits fork** of the original podio/valideer with expanded Python version support.
+
 ## Development Commands
 
 ```bash
-# Run tests
-python setup.py test
+# Run tests (modern approach)
+python -m unittest discover -s valideer/tests
 
-# Run tests with coverage via tox
+# Run tests with coverage
+coverage run --source=valideer -m unittest discover -s valideer/tests
+coverage report
+
+# Run tests across multiple Python versions
 tox
 
-# Install in development mode
-python setup.py install
+# Install for development
+pip install -e .
 
-# Run tests with coverage (CI approach)
-coverage run --source=valideer setup.py test
-coverage report
+# Install from requirements (for dependent projects)
+pip install git+https://github.com/happybits/valideer.git@main
+```
+
+## Installation in Other Projects
+
+Add to `requirements.txt`:
+```txt
+git+https://github.com/happybits/valideer.git@main
+```
+
+Or pin to specific commit for reproducible builds:
+```txt
+git+https://github.com/happybits/valideer.git@42086f5
 ```
 
 ## Code Architecture
@@ -54,7 +71,7 @@ coverage report
 
 ### Testing
 
-- **Framework**: Python unittest (single test file with 171 tests)
+- **Framework**: Python unittest (single test file with 186 tests)
 - **Coverage**: Comprehensive test coverage across all validators
 - **Test Structure**: One large test file organized by validator type
 
@@ -62,4 +79,12 @@ coverage report
 
 - **Runtime**: `decorator` package for function decoration
 - **Development**: `coverage` for test coverage reporting
-- **Python Version**: 3.10 (recently migrated)
+- **Python Versions**: 3.9, 3.10, 3.11, 3.12 (multi-version support)
+
+## Migration Notes
+
+This fork extends Python support from 3.10-only to 3.9-3.12. Key changes:
+- Updated CI/CD to test across all supported Python versions
+- Modernized test execution (unittest discover vs deprecated setup.py test)
+- Updated repository URLs from podio/valideer to happybits/valideer
+- Zero core library changes - migration achieved through configuration only
