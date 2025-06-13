@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: pip install coverage
+        run: pip install coverage setuptools
       - name: Run tests with coverage
         run: |
           coverage run --source=valideer setup.py test
