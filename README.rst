@@ -2,11 +2,11 @@
 Valideer
 ========
 
-.. image:: https://travis-ci.org/podio/valideer.svg?branch=master
-    :target: https://travis-ci.org/podio/valideer
+.. image:: https://github.com/happybits/valideer/workflows/Build%20and%20Test/badge.svg
+    :target: https://github.com/happybits/valideer/actions
 
-.. image:: https://coveralls.io/repos/podio/valideer/badge.svg?branch=master
-    :target: https://coveralls.io/r/podio/valideer?branch=master
+.. image:: https://coveralls.io/repos/happybits/valideer/badge.svg?branch=master
+    :target: https://coveralls.io/r/happybits/valideer?branch=master
 
 .. image:: https://img.shields.io/pypi/status/valideer.svg
     :target: https://pypi.python.org/pypi/valideer/
@@ -36,23 +36,42 @@ Lightweight data validation and adaptation library for Python.
   and location of the error.
 - Agnostic: not tied to any particular framework or application domain (e.g.
   Web form validation).
-- Well tested: Extensive test suite with 100% coverage.
+- Well tested: Extensive test suite with 100% coverage (186 tests).
 - Production ready: Used for validating every access to the `Podio API`_.
+- Python 3.9+ compatible: Supports Python 3.9, 3.10, 3.11, and 3.12.
 - Licence: MIT.
 
 
 Installation
 ------------
 
-To install run::
+**From Git (Recommended for this fork):**
+
+Add to your ``requirements.txt``::
+
+    git+https://github.com/happybits/valideer.git@main
+
+Or pin to a specific commit for reproducible builds::
+
+    git+https://github.com/happybits/valideer.git@4b8841b
+
+Or install directly::
+
+    pip install git+https://github.com/happybits/valideer.git@main
+
+**From PyPI (original package):**
+
+To install the original package run::
 
     pip install valideer
 
-Or for the latest version::
+**For development:**
 
-    git clone git@github.com:podio/valideer.git
+Clone and install in editable mode::
+
+    git clone git@github.com:happybits/valideer.git
     cd valideer
-    python setup.py install
+    pip install -e .
 
 You may run the unit tests with::
 
@@ -67,11 +86,15 @@ You may run the unit tests with::
     reading manifest template 'MANIFEST.in'
     writing manifest file 'valideer.egg-info/SOURCES.txt'
     running build_ext
-    ...........................................................................................................................................................................
+    ..................................................................................................................................................
     ----------------------------------------------------------------------
-    Ran 171 tests in 0.106s
+    Ran 186 tests in 0.037s
 
     OK
+
+Or use tox to test across multiple Python versions::
+
+    $ tox
 
 Basic Usage
 -----------
